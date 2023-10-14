@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Form, Button, Alert, Container } from 'react-bootstrap';
 import '../App.css';
 
 const BookingForm = () => {
@@ -31,7 +32,7 @@ const BookingForm = () => {
         }
 
         try {
-            await axios.post('127.0.0.1:8000/api/bookings', formData);
+            await axios.post('http://127.0.0.1:8000/api/bookings', formData);
             setSuccess(true);
             setFormData({
                 name: '',
@@ -45,43 +46,53 @@ const BookingForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="booking-form">
-            {error && <p className="error">{error}</p>}
-            {success && <p className="success">Booking Successful!</p>}
-            <label htmlFor="name">Name:</label>
-            <input 
-                type="text" 
-                name="name" 
-                value={formData.name} 
-                onChange={handleChange} 
-                required 
-            />
-            <label htmlFor="date">Date:</label>
-            <input 
-                type="date" 
-                name="date" 
-                value={formData.date} 
-                onChange={handleChange} 
-                required 
-            />
-            <label htmlFor="time">Time:</label>
-            <input 
-                type="time" 
-                name="time" 
-                value={formData.time} 
-                onChange={handleChange} 
-                required 
-            />
-            <label htmlFor="number_of_people">Number of People:</label>
-            <input 
-                type="number" 
-                name="number_of_people" 
-                value={formData.number_of_people} 
-                onChange={handleChange} 
-                required 
-            />
-            <button type="submit">Book Table</button>
-        </form>
+        <Container className="mt-5">
+            <Form onSubmit={handleSubmit} className="booking-form">
+                {error && <Alert variant="danger">{error}</Alert>}
+                {success && <Alert variant="success">Booking Successful!</Alert>}
+                <Form.Group controlId="name">
+                    <Form.Label>Name:</Form.Label>
+                    <Form.Control 
+                        type="text" 
+                        name="name" 
+                        value={formData.name} 
+                        onChange={handleChange} 
+                        required 
+                    />
+                </Form.Group>
+                <Form.Group controlId="date">
+                    <Form.Label>Date:</Form.Label>
+                    <Form.Control 
+                        type="date" 
+                        name="date" 
+                        value={formData.date} 
+                        onChange={handleChange} 
+                        required 
+                    />
+                </Form.Group>
+                <Form.Group controlId="time">
+                    <Form.Label>Time:</Form.Label>
+                    <Form.Control 
+                        type="time" 
+                        name="time" 
+                        value={formData.time} 
+                        onChange={handleChange} 
+                        required 
+                    />
+                </Form.Group>
+                <Form.Group controlId="number_of_people">
+                    <Form.Label>Number of People:</Form.Label>
+                    <Form.Control 
+                        type="number" 
+                        name="number_of_people" 
+                        value={formData.number_of_people} 
+                        onChange={handleChange} 
+                        required 
+                    />
+                </Form.Group>
+                <Button variant="primary" type="submit">Book Table</Button>
+            </Form>
+        </Container>
     );
 };
 
