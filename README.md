@@ -15,7 +15,7 @@ Ensure you have the following installed on your local machine:
 
 1. **Clone the Repository**
    ```sh
-   git clone [YOUR_GITHUB_REPO_URL]
+   git clone [(https://github.com/Waariss/Little_Lemon.git )]
    ```
 2. **Navigate to the Project Directory**
    ```sh
@@ -23,9 +23,8 @@ Ensure you have the following installed on your local machine:
    ```
 3. **Install Required Packages**
    ```sh
-   pip install -r requirements.txt
+   npm install
    ```
-   > 💡 You might need to create a `requirements.txt` file listing all the necessary packages.
 4. **Configure Database**
    - Update `settings.py` in the `LittleLemon` directory with your MySQL database credentials.
 5. **Run Migrations**
